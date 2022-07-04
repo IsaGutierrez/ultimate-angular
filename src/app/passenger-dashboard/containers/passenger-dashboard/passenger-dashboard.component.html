@@ -32,6 +32,22 @@
     Searching for... {{ name1 }}
   </div>
 
+  <br>
+  <br>
+  <hr>
+  <div>
+    <passenger-count
+      [items]="passengers">
+    </passenger-count>
+
+    <passenger-detail
+      *ngFor="let passenger of passengers;"
+      [detail]="passenger">
+    </passenger-detail>
+  </div>
+  <hr>
+  <br>
+
   <ul>
     <li *ngFor="let passenger of passengers; let i = index">
       <div class="passenger-div">
@@ -81,3 +97,6 @@
     </li>
 
   </ul>
+
+  <br>
+  

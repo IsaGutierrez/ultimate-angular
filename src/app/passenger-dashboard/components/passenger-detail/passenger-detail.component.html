@@ -1,0 +1,21 @@
+    <div>
+    <span 
+          class="status"
+          [ngStyle]="{
+            backgroundColor: (detail.checkedIn ? 'purple' : 'orange')
+          }"
+        ></span>
+        
+        <h4>{{ detail.name }}</h4>
+        
+        <!-- Pipes for transformation. The | operator tells Angular which pipe you want to use. -->
+        <!-- <p> {{ detail | json }}</p> This Pipe for example lets us print objects on our web application which is very useful for debugging. -->
+
+        <div class="date">
+          <p>Checked in: {{ detail.checkedIn ? (detail.checkInDate | date: 'y-MMMM-d' | uppercase) : 'Not yet' }}</p>
+        </div>
+      </div>
+
+      <div>
+        <p>Pets: {{ detail.pets?.length || 'none' }}</p>
+      </div>
