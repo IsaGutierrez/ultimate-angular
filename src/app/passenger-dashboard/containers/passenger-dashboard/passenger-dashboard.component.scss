@@ -1,0 +1,34 @@
+.dashboard {
+    display: flex;
+}
+
+.angular-logo {
+    max-width: 80px;
+}
+
+.passenger-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+.status {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    display: block;
+    margin-right: 10px;
+    float: left;
+    border-radius: 100%;
+    &.checked-in {
+        background-color: green;
+    }
+}
+
+.date {
+    margin-left: 10px;
+}

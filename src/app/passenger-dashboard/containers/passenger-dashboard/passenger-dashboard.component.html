@@ -1,0 +1,83 @@
+<div class="dashboard">
+    <h1 [innerHTML]="title"></h1>
+    <img [src]="logo" class="angular-logo">
+  </div>
+  
+  {{ numberOne + numberTwo }}
+  {{ isHappy ? ':)' : ':(' }}
+
+  <div>
+    <!-- <input 
+      type="text"
+      [ngModel]="name"
+      (ngModelChange)="handleChange($event)"
+    > -->
+
+    <!-- <input 
+      type="text"
+      [(ngModel)]="name"
+    > -->
+
+    <button (click)="handleClick()">Change name</button>
+  </div>
+  
+  <h3 [innerHTML]="name"></h3>
+  
+  <div>
+    <input type="text" #username>
+    <button (click)="handleValueClick(username.value)">Get value</button>
+  </div>
+
+  <div *ngIf="name1.length > 4">
+    Searching for... {{ name1 }}
+  </div>
+
+  <ul>
+    <li *ngFor="let passenger of passengers; let i = index">
+      <div class="passenger-div">
+        
+        <!-- Property binding -->
+        <span 
+          class="status"
+          [class.checked-in]="passenger.checkedIn"
+        ></span>
+        
+        <!-- ngClass -->
+        <span 
+          class="status"
+          [ngClass]="{ 
+            'checked-in': passenger.checkedIn, 
+            'checked-out': !passenger.checkedIn
+          }"
+        ></span>
+        
+        <!-- style -->
+        <span 
+          class="status"
+          [style.backgroundColor]="(passenger.checkedIn ? 'blue' : 'pink')"
+        ></span>
+        
+        <!-- ngStyle -->
+        <span 
+          class="status"
+          [ngStyle]="{
+            backgroundColor: (passenger.checkedIn ? 'purple' : 'orange')
+          }"
+        ></span>
+        
+        <h4>{{ i + 1 }}: {{ passenger.name }}</h4>
+        
+        <!-- Pipes for transformation. The | operator tells Angular which pipe you want to use. -->
+        <!-- <p> {{ passenger | json }}</p> This Pipe for example lets us print objects on our web application which is very useful for debugging. -->
+
+        <div class="date">
+          <p>Checked in: {{ passenger.checkedIn ? (passenger.checkInDate | date: 'y-MMMM-d' | uppercase) : 'Not yet' }}</p>
+        </div>
+      </div>
+
+      <div>
+        <p>Pets: {{ passenger.pets?.length || 'none' }}</p>
+      </div>
+    </li>
+
+  </ul>
