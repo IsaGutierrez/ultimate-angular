@@ -32,6 +32,13 @@
     Searching for... {{ name1 }}
   </div>
 
+  <hr>
+  <h3>List of names</h3>
+  <div>
+    <p *ngFor="let passenger of passengers">{{ passenger.name }}</p>
+  </div>
+
+
   <br>
   <br>
   <hr>
@@ -42,7 +49,10 @@
 
     <passenger-detail
       *ngFor="let passenger of passengers;"
-      [detail]="passenger">
+      [detail]="passenger"
+      (edit)="handleEdit($event)"
+      (remove)="handleRemove($event)"
+      >
     </passenger-detail>
   </div>
   <hr>

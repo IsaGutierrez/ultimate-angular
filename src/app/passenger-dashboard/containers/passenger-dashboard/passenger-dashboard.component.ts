@@ -1,3 +1,4 @@
+import { ThisReceiver } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 
 import { Passenger } from "../../models/passenger.interface";
@@ -82,6 +83,21 @@ export class PassengerDashboardComponent implements OnInit {
 
     handleValueClick(value: string) {
         console.log(value)
+
+    }
+
+    handleEdit(event: any) {
+        this.passengers = this.passengers.map((passenger: Passenger) => {
+            if (passenger.id === event.id) {
+                return passenger = Object.assign({}, passenger, event)
+            } else { 
+                return passenger
+            }
+        })
+    }
+
+    handleRemove(event: any) {
+        this.passengers = this.passengers.filter((passenger: Passenger) => passenger.id !== event.id)
 
     }
 

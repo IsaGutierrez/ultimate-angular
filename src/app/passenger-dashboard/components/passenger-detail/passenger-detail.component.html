@@ -6,7 +6,21 @@
           }"
         ></span>
         
-        <h4>{{ detail.name }}</h4>
+        <div>
+            <div *ngIf="editing">
+                <input 
+                    type="text" 
+                    [value]="detail.name"
+                    (input)="onNameChange(name.value)"
+                    #name>
+                </div>
+                <div *ngIf="!editing">
+                    <h4>{{ detail.name }}</h4>
+                </div>
+                
+                <button (click)="toggleEdit()">{{ !editing ? 'Edit' : 'Done' }}</button>
+                <button (click)="onRemove ()">Remove</button>
+        </div>
         
         <!-- Pipes for transformation. The | operator tells Angular which pipe you want to use. -->
         <!-- <p> {{ detail | json }}</p> This Pipe for example lets us print objects on our web application which is very useful for debugging. -->
